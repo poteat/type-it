@@ -1,5 +1,4 @@
-import { isTuple } from "../../isTuple";
-import { isType } from "../../type/isType";
+import { typeIt } from "../../typeIt";
 
 export function checkRecursiveTypeCases(value: any, type: any): boolean {
   /**
@@ -14,10 +13,10 @@ export function checkRecursiveTypeCases(value: any, type: any): boolean {
   return (
     typeof value === "object" &&
     typeof type === "object" &&
-    Object.entries(value).every(([key, x]: [any, any]) =>
-      type[key] && Array.isArray(x)
-        ? isTuple(x, type[key])
-        : isType(x, type[key])
+    !Array.isArray(value) &&
+    !Array.isArray(type) &&
+    Object.entries(value).every(
+      ([key, x]: [any, any]) => type[key] && typeIt(x, type[key])
     )
   );
 }

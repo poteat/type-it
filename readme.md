@@ -44,13 +44,17 @@ const value = {
   z: Number
 } as any;
 
-const type = {x:[{y:MyClass}], z: 42};
+const type = {x:[{y:MyClass}],z:42} as const;
 
 if (typeIt(value, type)) {
 
   value; // TS::{x:[{y:MyClass}],z:Number}
 }
 ```
+
+Note, to use tuples or literals, the keyword 'as const' is needed to prevent
+Typescript from automatically widening the types. This is how you unlock
+length-specific tuple validation as well as literal string typing.
 
 ---
 

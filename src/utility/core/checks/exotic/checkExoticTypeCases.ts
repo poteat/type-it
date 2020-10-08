@@ -1,5 +1,5 @@
-import { AsyncGeneratorFunction } from "../../../generators/AsyncGeneratorFunction";
-import { GeneratorFunction } from "../../../generators/GeneratorFunction";
+import { AsyncGeneratorFunction } from "../../../shims/generators/AsyncGeneratorFunction";
+import { GeneratorFunction } from "../../../shims/generators/GeneratorFunction";
 
 export function checkExoticTypeCases(value: any, type: any) {
   return (

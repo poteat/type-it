@@ -7,7 +7,7 @@
 ## Installation
 
 ```sh
-npm i type-it
+npm i ts-type-it
 ```
 
 ---
@@ -35,7 +35,7 @@ type-it is as powerful as it is simple. It has support for tuples, strings, numb
 type-it also supports any class you define, with zero extra code.  For example:
 
 ```ts
-import { typeIt } from "type-it"
+import { typeIt } from "ts-type-it"
 
 class MyClass { }
 

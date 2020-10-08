@@ -1,5 +1,5 @@
 {
-  "name": "type-it",
+  "name": "ts-type-it",
   "version": "0.0.1",
   "description": "An npm library for checking deep types via type predicate.",
   "main": "./dist/src/index.js",

@@ -10,6 +10,10 @@
 npm i ts-type-it
 ```
 
+## Screenshot
+
+![demo](./logo/demo.png)
+
 ---
 
 ## Usage
@@ -28,7 +32,7 @@ if (typeIt(value, { x: String })) { // Passes!
 type-it takes in any value to check, along with a simple type object. It returns a boolean value with full type inference.
 
 ---
-## Deep Support
+## Feature Support
 
 type-it is as powerful as it is simple. It has support for tuples, strings, numbers, literals, booleans, symbols, Promises, Generators, AsyncGenerators, and nested structures, right out-of-the-box.
 

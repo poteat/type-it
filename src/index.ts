@@ -1,1 +1,1 @@
-export const hi = "hi";
+export { isTuple } from "./utility/core/isTuple";

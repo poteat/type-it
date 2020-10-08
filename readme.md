@@ -1,6 +1,6 @@
 ![type-it](./logo/type-it.png)
 
-> An npm library for checking types at runtime. No build steps, clear and simple syntax.
+**A Typescript utility for checking types at runtime. No build steps, clear and simple syntax.**
 
 ---
 

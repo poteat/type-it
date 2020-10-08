@@ -1,7 +1,7 @@
 {
   "name": "ts-type-it",
   "version": "0.0.1",
-  "description": "An npm library for checking deep types via type predicate.",
+  "description": "An npm library for checking deep types via type predicates.",
   "main": "./dist/src/index.js",
   "types": "./dist/src/index.d.ts",
   "scripts": {

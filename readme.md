@@ -1,6 +1,6 @@
-![template](./logo/template.png)
+![type-it](./logo/type-it.png)
 
-> An npm library for checking types at runtime. No extra build steps, simple and obvious syntax.
+> An npm library for checking types at runtime. No build steps, clear and simple syntax.
 
 ---
 
@@ -17,22 +17,22 @@ npm i type-it
 ```ts
 import { typeIt } from "type-it"
 
-const x = {x: "foobar"} as any;
+const value = { x: "foobar" } as any;
 
-if (typeIt(foobar, {x: String})) {
+if (typeIt(value, { x: String })) { // Passes!
 
-  x; // TS::string
+  x; // TS::{x:string}
 }
 ```
 
-type-it takes in any value to check, and a simply written type, and returns a boolean value with full type inference.
+type-it takes in any value to check, along with a simple type object. It returns a boolean value with full type inference.
 
 ---
-## Support
+## Deep Support
 
-type-it is as powerful as it is simple. It has support for tuples, strings, numbers, literals, booleans, symbols, Promises, Generators, AsyncGenerators, nested structures, and any class you define, out-of-the-box.
+type-it is as powerful as it is simple. It has support for tuples, strings, numbers, literals, booleans, symbols, Promises, Generators, AsyncGenerators, and nested structures, right out-of-the-box.
 
-For example:
+type-it also supports any class you define, with zero extra code.  For example:
 
 ```ts
 import { typeIt } from "type-it"

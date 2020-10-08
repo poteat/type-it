@@ -19,7 +19,7 @@ npm i ts-type-it
 ## Usage
 
 ```ts
-import { typeIt } from "type-it"
+import { typeIt } from "ts-type-it"
 
 const value = { x: "foobar" } as any;
 
@@ -68,7 +68,7 @@ You can type-check against literals (again, arbitrarily nested) and everything w
 
 
 ```ts
-import { typeIt } from "type-it"
+import { typeIt } from "ts-type-it"
 
 const value = 400 as any;
 const type = 42;

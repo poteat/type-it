@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "**/*",
+    "package.json",
+    "tsconfig.eslint.json",
+    "tsconfig.json"
+  ]
+}

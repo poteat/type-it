@@ -1,0 +1,26 @@
+{
+  "version": "0.2.0",
+  "configurations": [{
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Program",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}\\dist\\src\\index.js",
+    },
+    {
+      "type": "node",
+      "name": "Run Script: cli",
+      "request": "launch",
+      "runtimeArgs": ["run-script", "cli", "--", "scratchpad.flow"],
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "npm",
+      "console": "externalTerminal",
+      "outFiles": [
+        "${workspaceFolder}/dist/**/*.js",
+        "${workspaceFolder}/dist/**/*.ts"
+      ]
+    }
+  ]
+}

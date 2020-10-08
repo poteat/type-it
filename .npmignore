@@ -1,0 +1,23 @@
+# Don't need ignore files on npm
+.gitignore
+.eslintingore
+.eslintrc.json
+
+# Don't need configuration files
+jest.config.js
+tsconfig.json
+tsconfig.eslint.json
+webpack.config.js
+
+# Don't need temporary build files
+tsconfig.tsbuildinfo
+
+# No need for ide configuration
+.vscode
+
+# No need for docs or tests on npm
+docs
+test
+coverage
+logo
+script

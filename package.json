@@ -1,0 +1,73 @@
+{
+  "name": "is-tuple",
+  "version": "0.0.1",
+  "description": "An npm library for checking tuple types via type predicate.",
+  "main": "./dist/src/index.js",
+  "types": "./dist/src/index.d.ts",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "test": "jest",
+    "build": "tsc",
+    "lint": "eslint --fix --color ./src/**/*",
+    "prepublishOnly": "npm run clean && npm run build",
+    "postpublish": "git push && git push --tags",
+    "upgrade": "ncu -u && npm i"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/poteat/is-tuple.git"
+  },
+  "keywords": [
+    "tuple",
+    "types",
+    "predicate",
+    "runtime",
+    "typescript",
+    "class"
+  ],
+  "author": "Michael Poteat <me@mpote.at>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/poteat/is-tuple/issues"
+  },
+  "homepage": "https://github.com/poteat/is-tuple#readme",
+  "devDependencies": {
+    "@types/lodash": "^4.14.161",
+    "@types/node": "^14.11.2",
+    "@typescript-eslint/eslint-plugin": "^4.3.0",
+    "@typescript-eslint/parser": "^4.3.0",
+    "eslint": "^7.10.0",
+    "eslint-config-adjunct": "^4.8.7",
+    "eslint-config-prettier": "^6.12.0",
+    "eslint-plugin-array-func": "^3.1.7",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-html": "^6.1.0",
+    "eslint-plugin-jest": "^24.0.2",
+    "eslint-plugin-jest-async": "^1.0.3",
+    "eslint-plugin-json": "^2.1.2",
+    "eslint-plugin-lodash": "^7.1.0",
+    "eslint-plugin-lodash-fp": "^2.2.0-a1",
+    "eslint-plugin-markdown": "^1.0.2",
+    "eslint-plugin-no-constructor-bind": "^2.0.3",
+    "eslint-plugin-no-secrets": "^0.6.8",
+    "eslint-plugin-no-unsanitized": "^3.1.4",
+    "eslint-plugin-no-use-extend-native": "^0.5.0",
+    "eslint-plugin-optimize-regex": "^1.2.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-scanjs-rules": "^0.2.1",
+    "eslint-plugin-security": "^1.4.0",
+    "eslint-plugin-simple-import-sort": "^5.0.3",
+    "eslint-plugin-sonarjs": "^0.5.0",
+    "eslint-plugin-switch-case": "^1.1.2",
+    "eslint-plugin-unicorn": "^22.0.0",
+    "jest": "^26.4.2",
+    "lodash": "^4.17.20",
+    "prettier": "^2.1.2",
+    "ts-jest": "^26.4.1",
+    "ts-node": "^9.0.0",
+    "ts-toolbelt": "^8.0.6",
+    "typescript": "^4.0.3"
+  },
+  "dependencies": {}
+}

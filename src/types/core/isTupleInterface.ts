@@ -81,13 +81,12 @@ export interface isTupleInterface {
    *
    * Somewhere in your type stack there is an element that Typescript is
    * inferring as an array type. Effectively, it never makes sense to have
-   * elements in the type map to have arbitrary length type, since they
-   * effectively form _kinds_. Besides, this project is called `is-tuple` not
-   * `is-array` after all :^).
+   * elements in the type map to have arbitrary length type, since it makes
+   * certain type structures (very hard?) (impossible?) to disambiguate.
    *
    * This error will also show up if your tuple is larger than a preconfigured
-   * length, since we cannot perform constructor inference on variadic types at
-   * the time of writing.
+   * length, since we (cannot?) perform constructor inference on variadic types
+   * at the time of writing.
    *
    * ---
    *

@@ -1,7 +1,7 @@
 {
-  "name": "is-tuple",
+  "name": "type-it",
   "version": "0.0.1",
-  "description": "An npm library for checking tuple types via type predicate.",
+  "description": "An npm library for checking deep types via type predicate.",
   "main": "./dist/src/index.js",
   "types": "./dist/src/index.d.ts",
   "scripts": {
@@ -15,22 +15,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/poteat/is-tuple.git"
+    "url": "git+ssh://git@github.com/poteat/type-it.git"
   },
-  "keywords": [
-    "tuple",
-    "types",
-    "predicate",
-    "runtime",
-    "typescript",
-    "class"
-  ],
+  "keywords": ["tuple", "types", "predicate", "runtime", "typescript", "class"],
   "author": "Michael Poteat <me@mpote.at>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/poteat/is-tuple/issues"
+    "url": "https://github.com/poteat/type-it/issues"
   },
-  "homepage": "https://github.com/poteat/is-tuple#readme",
+  "homepage": "https://github.com/poteat/type-it#readme",
   "devDependencies": {
     "@types/lodash": "^4.14.161",
     "@types/node": "^14.11.2",

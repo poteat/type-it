@@ -17,7 +17,14 @@
     "type": "git",
     "url": "git+ssh://git@github.com/poteat/type-it.git"
   },
-  "keywords": ["tuple", "types", "predicate", "runtime", "typescript", "class"],
+  "keywords": [
+    "tuple",
+    "types",
+    "predicate",
+    "runtime",
+    "typescript",
+    "class"
+  ],
   "author": "Michael Poteat <me@mpote.at>",
   "license": "MIT",
   "bugs": {

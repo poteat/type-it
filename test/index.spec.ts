@@ -1,10 +1,13 @@
 import { typeIt } from "../src/utility/core/typeIt";
-import { AsyncGeneratorFunction } from "../src/utility/shims/generators/AsyncGeneratorFunction";
-import { GeneratorFunction } from "../src/utility/shims/generators/GeneratorFunction";
+import { AsyncGeneratorFunction } from "../src/utility/types/generators/AsyncGeneratorFunction";
+import { GeneratorFunction } from "../src/utility/types/generators/GeneratorFunction";
 
 describe("Empty tuple type checking", () => {
   it("[] === []", () => {
-    const isValid = typeIt([], []);
+    const value = [] as unknown;
+    const type = [] as const;
+
+    const isValid = typeIt(value, type);
     expect(isValid).toStrictEqual(true);
   });
 });
@@ -14,10 +17,10 @@ describe("Custom class type checking", () => {
     const A = class {};
     const B = class {};
 
-    const instances = [new A(), new B()];
+    const value = [new A(), new B()] as unknown;
+    const type = [A, B] as const;
 
-    const isValid = typeIt(instances, [A, B]);
-
+    const isValid = typeIt(value, type);
     expect(isValid).toStrictEqual(true);
   });
 
@@ -25,14 +28,10 @@ describe("Custom class type checking", () => {
     const A = class {};
     const B = class {};
 
-    const instances = [new B(), new A()] as any;
+    const value = [new B(), new A()] as unknown;
+    const type = [A, B] as const;
 
-    const isValid = typeIt(instances, [A, B]);
-
-    if (typeIt(instances, [A, B])) {
-      instances;
-    }
-
+    const isValid = typeIt(value, type);
     expect(isValid).toStrictEqual(false);
   });
 
@@ -40,10 +39,10 @@ describe("Custom class type checking", () => {
     const A = class {};
     const B = class {};
 
-    const instances = [new A(), new B()];
+    const value = [new A(), new B()] as unknown;
+    const type = [A] as const;
 
-    const isValid = typeIt(instances, [A]);
-
+    const isValid = typeIt(value, type);
     expect(isValid).toStrictEqual(false);
   });
 
@@ -51,9 +50,10 @@ describe("Custom class type checking", () => {
     const A = class {};
     const B = class {};
 
-    const instances = [new A()] as any;
+    const value = [new A()] as unknown;
+    const type = [A, B] as const;
 
-    const isValid = typeIt(instances, [A, B]);
+    const isValid = typeIt(value, type);
     expect(isValid).toStrictEqual(false);
   });
 });
@@ -62,28 +62,28 @@ describe("Native types", () => {
   describe("Numbers", () => {
     describe("Number type checking", () => {
       it("[5] === [Number]", () => {
-        const values = [5] as any;
-        const isValid = typeIt(values, [Number]);
+        const value = [5] as unknown;
+        const isValid = typeIt(value, [Number] as const);
         expect(isValid).toStrictEqual(true);
       });
 
       it(`['foobar'] !== [Number]`, () => {
-        const values = ["foobar"] as any;
-        const isValid = typeIt(values, [Number]);
+        const value = ["foobar"] as any;
+        const isValid = typeIt(value, [Number] as const);
         expect(isValid).toStrictEqual(false);
       });
     });
 
     describe("Literal number type checking", () => {
       it("[5] === [5]", () => {
-        const values = [5] as any;
-        const isValid = typeIt(values, [5]);
+        const value = [5] as any;
+        const isValid = typeIt(value, [5]);
         expect(isValid).toStrictEqual(true);
       });
 
       it(`[10] !== [5]`, () => {
-        const values = [10] as any;
-        const isValid = typeIt(values, [5]);
+        const value = [10] as any;
+        const isValid = typeIt(value, [5]);
         expect(isValid).toStrictEqual(false);
       });
     });
@@ -92,28 +92,28 @@ describe("Native types", () => {
   describe("Strings", () => {
     describe("String type checking", () => {
       it(`['foobar'] === [String]`, () => {
-        const values = ["foobar"] as any;
-        const isValid = typeIt(values, [String]);
+        const value = ["foobar"] as any;
+        const isValid = typeIt(value, [String]);
         expect(isValid).toStrictEqual(true);
       });
 
       it(`[5] !== [String]`, () => {
-        const values = [5] as any;
-        const isValid = typeIt(values, [String]);
+        const value = [5] as any;
+        const isValid = typeIt(value, [String]);
         expect(isValid).toStrictEqual(false);
       });
     });
 
     describe("Literal string type checking", () => {
       it(`['foobar'] === ['foobar']`, () => {
-        const values = ["foobar"] as any;
-        const isValid = typeIt(values, ["foobar"]);
+        const value = ["foobar"] as any;
+        const isValid = typeIt(value, ["foobar"]);
         expect(isValid).toStrictEqual(true);
       });
 
       it(`['bar'] !== ['foobar']`, () => {
-        const values = ["bar"] as any;
-        const isValid = typeIt(values, ["foobar"]);
+        const value = ["bar"] as any;
+        const isValid = typeIt(value, ["foobar"]);
         expect(isValid).toStrictEqual(false);
       });
     });
@@ -122,28 +122,28 @@ describe("Native types", () => {
   describe("Booleans", () => {
     describe("Boolean type checking", () => {
       it(`[true] === [Boolean]`, () => {
-        const values = [true] as any;
-        const isValid = typeIt(values, [Boolean]);
+        const value = [true] as any;
+        const isValid = typeIt(value, [Boolean]);
         expect(isValid).toStrictEqual(true);
       });
 
       it(`[5] !== [Boolean]`, () => {
-        const values = [5] as any;
-        const isValid = typeIt(values, [Boolean]);
+        const value = [5] as any;
+        const isValid = typeIt(value, [Boolean]);
         expect(isValid).toStrictEqual(false);
       });
     });
 
     describe("Literal boolean type checking", () => {
       it(`[true] === [true]`, () => {
-        const values = [true] as any;
-        const isValid = typeIt(values, [true]);
+        const value = [true] as any;
+        const isValid = typeIt(value, [true]);
         expect(isValid).toStrictEqual(true);
       });
 
       it(`[false] !== [true]`, () => {
-        const values = [false] as any;
-        const isValid = typeIt(values, [true]);
+        const value = [false] as any;
+        const isValid = typeIt(value, [true]);
         expect(isValid).toStrictEqual(false);
       });
     });
@@ -152,14 +152,14 @@ describe("Native types", () => {
   describe("Symbols", () => {
     describe("Symbol type checking", () => {
       it(`[symbol] === [Symbol]`, () => {
-        const values = [Symbol("foobar")] as any;
-        const isValid = typeIt(values, [Symbol]);
+        const value = [Symbol("foobar")] as any;
+        const isValid = typeIt(value, [Symbol]);
         expect(isValid).toStrictEqual(true);
       });
 
       it(`[5] !== [Symbol]`, () => {
-        const values = [5] as any;
-        const isValid = typeIt(values, [Symbol]);
+        const value = [5] as any;
+        const isValid = typeIt(value, [Symbol]);
         expect(isValid).toStrictEqual(false);
       });
     });
@@ -167,14 +167,14 @@ describe("Native types", () => {
     describe("Literal symbol type checking", () => {
       it(`[symbolA] === [symbolA]`, () => {
         const symbol = Symbol("A");
-        const values = [symbol] as any;
-        const isValid = typeIt(values, [symbol]);
+        const value = [symbol] as any;
+        const isValid = typeIt(value, [symbol]);
         expect(isValid).toStrictEqual(true);
       });
 
       it(`[symbolA] !== [symbolB]`, () => {
-        const values = [Symbol("A")] as any;
-        const isValid = typeIt(values, [Symbol("B")]);
+        const value = [Symbol("A")] as any;
+        const isValid = typeIt(value, [Symbol("B")]);
         expect(isValid).toStrictEqual(false);
       });
     });
@@ -184,23 +184,23 @@ describe("Native types", () => {
 describe("Mixed typed tuples", () => {
   it("[a, 'foobar'] === [A, String]", () => {
     const A = class {};
-    const values = [new A(), "foobar"];
-    const isValid = typeIt(values, [A, String]);
+    const value = [new A(), "foobar"];
+    const isValid = typeIt(value, [A, String]);
     expect(isValid).toStrictEqual(true);
   });
 
   it("[a, 'foobar', 101] === [A, String, 101]", () => {
     const A = class {};
-    const values = [new A(), "foobar", 101];
-    const isValid = typeIt(values, [A, String, 101]);
+    const value = [new A(), "foobar", 101];
+    const isValid = typeIt(value, [A, String, 101]);
     expect(isValid).toStrictEqual(true);
   });
 
   it("[a, 'foobar', 101] !== [B, String, 101]", () => {
     const A = class {};
     const B = class {};
-    const values = [new A(), "foobar", 101];
-    const isValid = typeIt(values, [B, String, 101]);
+    const value = [new A(), "foobar", 101];
+    const isValid = typeIt(value, [B, String, 101]);
     expect(isValid).toStrictEqual(false);
   });
 });
@@ -209,14 +209,14 @@ describe("Special duck-types", () => {
   describe("Promises", () => {
     it("[promise] === [Promise]", () => {
       const p = (async () => {})();
-      const values = [p];
-      const isValid = typeIt(values, [Promise]);
+      const value = [p];
+      const isValid = typeIt(value, [Promise]);
       expect(isValid).toStrictEqual(true);
     });
 
     it("[5] !== [Promise]", () => {
-      const values = [5];
-      const isValid = typeIt(values, [Promise]);
+      const value = [5];
+      const isValid = typeIt(value, [Promise]);
       expect(isValid).toStrictEqual(false);
     });
   });
@@ -224,14 +224,14 @@ describe("Special duck-types", () => {
   describe("Errors", () => {
     it("[error] === [Error]", () => {
       const e = new Error();
-      const values = [e];
-      const isValid = typeIt(values, [Error]);
+      const value = [e];
+      const isValid = typeIt(value, [Error]);
       expect(isValid).toStrictEqual(true);
     });
 
     it("[5] !== [Error]", () => {
-      const values = [5];
-      const isValid = typeIt(values, ([Error, Error] as unknown) as Error[]);
+      const value = [5];
+      const isValid = typeIt(value, ([Error, Error] as unknown) as Error[]);
       expect(isValid).toStrictEqual(false);
     });
   });
@@ -240,56 +240,56 @@ describe("Special duck-types", () => {
 describe("Exotic types", () => {
   it("[generator] === [GeneratorFunction]", () => {
     const gen = function* () {};
-    const values = [gen];
-    const isValid = typeIt(values, [GeneratorFunction]);
+    const value = [gen];
+    const isValid = typeIt(value, [GeneratorFunction]);
     expect(isValid).toStrictEqual(true);
   });
 
   it("[asyncGenerator] !== [GeneratorFunction]", () => {
     const gen = async function* () {};
-    const values = [gen];
-    const isValid = typeIt(values, [GeneratorFunction]);
+    const value = [gen];
+    const isValid = typeIt(value, [GeneratorFunction]);
     expect(isValid).toStrictEqual(false);
   });
 
   it("[asyncGenerator] === [AsyncGeneratorFunction]", () => {
     const gen = async function* () {};
-    const values = [gen];
-    const isValid = typeIt(values, [AsyncGeneratorFunction]);
+    const value = [gen];
+    const isValid = typeIt(value, [AsyncGeneratorFunction]);
     expect(isValid).toStrictEqual(true);
   });
 });
 
 describe("Nested objects", () => {
   it("[{x: 'foobar'}] === [{x: String}]", () => {
-    const values = [{ x: "foobar" }] as any;
-    const isValid = typeIt(values, [{ x: String }]);
+    const value = [{ x: "foobar" }] as any;
+    const isValid = typeIt(value, [{ x: String }]);
     expect(isValid).toStrictEqual(true);
   });
 
   it("[{x: 'foobar', y: 42}] !== [{x: String}]", () => {
-    const values = [{ x: "foobar", y: 42 }] as any;
-    const isValid = typeIt(values, [{ x: String }]);
+    const value = [{ x: "foobar", y: 42 }] as any;
+    const isValid = typeIt(value, [{ x: String }]);
     expect(isValid).toStrictEqual(false);
   });
 
   it("[{x: 'foobar'}] !== [{x: String, y: 42}]", () => {
-    const values = [{ x: "foobar", y: 42 }] as any;
-    const isValid = typeIt(values, [{ x: String }]);
+    const value = [{ x: "foobar", y: 42 }] as any;
+    const isValid = typeIt(value, [{ x: String }]);
     expect(isValid).toStrictEqual(false);
   });
 });
 
 describe("Deeply nested objects", () => {
   it("[{x:{y:[{z:42}]}}, 'foo'] === [[{x:{y:[{z:Number}]}}, 'foo']", () => {
-    const values = [{ x: { y: [{ z: 42 }] } }, "foo"] as any;
-    const isValid = typeIt(values, [{ x: { y: [{ z: 42 }] } }, "foo"]);
+    const value = [{ x: { y: [{ z: 42 }] } }, "foo"] as any;
+    const isValid = typeIt(value, [{ x: { y: [{ z: 42 }] } }, "foo"]);
     expect(isValid).toStrictEqual(true);
   });
 
   it("[{x:{y:[{z:42}]}}, 'bar'] !== [[{x:{y:[{z:Number}]}}, 'foo']", () => {
-    const values = [{ x: { y: [{ z: 42 }] } }, "bar"] as any;
-    const isValid = typeIt(values, [{ x: { y: [{ z: 42 }] } }, "foo"]);
+    const value = [{ x: { y: [{ z: 42 }] } }, "bar"] as any;
+    const isValid = typeIt(value, [{ x: { y: [{ z: 42 }] } }, "foo"]);
     expect(isValid).toStrictEqual(false);
   });
 });

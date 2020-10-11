@@ -1,5 +1,5 @@
-import { Class } from "../../../class/Class";
-import { InstanceOf } from "../../../instances/InstanceOf";
+import { Class } from "../../class/Class";
+import { InstanceOf } from "../../instances/InstanceOf";
 
 export type NativeInstanceOfClass<C extends Class> = C extends NumberConstructor
   ? number

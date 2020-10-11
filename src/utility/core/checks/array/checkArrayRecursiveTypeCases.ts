@@ -1,5 +1,5 @@
 import { arraysAreOfEqualLength } from "../../../arrays/arraysAreOfEqualLength";
-import { More } from "../../../shims/arrays/More";
+import { More } from "../../../types/arrays/More";
 import { typeIt } from "../../typeIt";
 
 /**

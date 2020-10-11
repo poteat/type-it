@@ -1,5 +1,4 @@
 import { TypeWriter } from "./core/TypeWriter";
-import { PredicateKind } from "./predicate/PredicateKind";
 
 /**
  * The type interface associated with the `typeIt` function. The types and
@@ -28,5 +27,5 @@ export interface TypeIt {
    * @param type Runtime type representation mapping to validate against.
    *
    */
-  <C extends PredicateKind>(value: unknown, type: C): value is TypeWriter<C>;
+  <T>(value: unknown, type: T): value is TypeWriter<T>;
 }

@@ -1,6 +1,11 @@
 import { Class } from "../../class/Class";
 import { InstanceOf } from "../../instances/InstanceOf";
 
+/**
+ * As appropriate, converts types into either their instance types, or in the
+ * case of some special cases, their corresponding native type, e.g. `Number` =>
+ * `number`, etc.
+ */
 export type NativeInstanceOfClass<C extends Class> = C extends NumberConstructor
   ? number
   : C extends StringConstructor
@@ -11,8 +16,4 @@ export type NativeInstanceOfClass<C extends Class> = C extends NumberConstructor
   ? symbol
   : C extends ObjectConstructor
   ? object
-  : C extends PromiseConstructor
-  ? Promise<any>
-  : C extends ErrorConstructor
-  ? Error
   : InstanceOf<C>;

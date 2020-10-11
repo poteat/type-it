@@ -16,6 +16,9 @@ import { NativeInstanceOfClass } from "../native/instances/NativeInstanceOfClass
  * types which are recursive themselves (i.e. the compiler does not infinitely
  * loop). Instead, the underlying recursive type is converted to an anonymous
  * recursive type.
+ *
+ * The very last clause, wherein `T` maps to `T`, in used in the literal case,
+ * e.g. TypeWriter<42> = 42.
  */
 export type TypeWriter<T> = T extends Class
   ? NativeInstanceOfClass<T>

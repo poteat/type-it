@@ -36,6 +36,8 @@ type-it takes in any value to check, along with a simple type object. It returns
 
 type-it is as powerful as it is simple. It has support for tuples, strings, numbers, literals, booleans, symbols, Promises, Generators, AsyncGenerators, and nested structures, right out-of-the-box.
 
+## Classes
+
 type-it also supports any class you define, with zero extra code.  For example:
 
 ```ts
@@ -80,6 +82,25 @@ if (typeIt(value, type)) { // will return false as 400 !== 42
 ```
 
 This library can be used for validating parameters all the way to validating complex payloads, all with a minimum conceptual overhead. If you know Typescript, you know how to use type-it.
+
+---
+
+## Unions
+
+Unions can be expressed and checked via the `Union` keyword:
+
+```ts
+import { typeIt, Union } from "ts-type-it"
+
+const value = 400 as any;
+const type = 42;
+
+if (typeIt(value, Union(String, {x: Number}))) {
+  value; // TS::string|{x:number}
+}
+```
+
+Additionally, Union works recursively both on the type and value levels. So having internal types of Union that also utilize Union is just fine.
 
 ---
 

@@ -24,3 +24,7 @@ script
 
 # etc.
 *.spec.ts
+*.spec.d.ts
+*.spec.js
+*.spec.d.ts.map
+*.spec.d.js.map

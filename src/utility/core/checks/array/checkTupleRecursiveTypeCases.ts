@@ -10,7 +10,7 @@ import { typeIt } from "../../typeIt";
  * @param value Value to type check.
  * @param type Type to validate against.
  */
-export function checkArrayRecursiveTypeCases(value: any, type: any): boolean {
+export function checkTupleRecursiveTypeCases(value: any, type: any): boolean {
   if (!Array.isArray(value) || !Array.isArray(type)) {
     return false;
   }

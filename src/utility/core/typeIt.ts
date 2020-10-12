@@ -1,5 +1,5 @@
 import { TypeIt } from "../../types/TypeIt";
-import { checkArrayRecursiveTypeCases } from "./checks/array/checkArrayRecursiveTypeCases";
+import { checkTupleRecursiveTypeCases } from "./checks/array/checkTupleRecursiveTypeCases";
 import { checkConstructorTypeCases } from "./checks/class/checkConstructorTypeCases";
 import { checkExoticTypeCases } from "./checks/exotic/checkExoticTypeCases";
 import { checkGeneralTypeCases } from "./checks/general/checkGeneralTypeCases";
@@ -22,7 +22,7 @@ import { checkUnionTypeCases } from "./checks/union/checkUnionTypeCases";
  */
 export const typeIt = ((value: any, type: any) => {
   return [
-    checkArrayRecursiveTypeCases,
+    checkTupleRecursiveTypeCases,
     checkSpecialTypeCases,
     checkExoticTypeCases,
     checkGeneralTypeCases,

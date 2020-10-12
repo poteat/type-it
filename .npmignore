@@ -21,3 +21,6 @@ test
 coverage
 logo
 script
+
+# etc.
+*.spec.ts

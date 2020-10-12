@@ -1,3 +1,4 @@
+import { UnionType } from "../../utility/union/type/UnionType";
 import { TypeWriter } from "../core/TypeWriter";
 
 /**

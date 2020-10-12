@@ -1,3 +1,5 @@
+import { UnionType } from "./type/UnionType";
+
 /**
  * Represents a union type of two or more types.
  */

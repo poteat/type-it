@@ -6,6 +6,7 @@ import { checkGeneralTypeCases } from "./checks/general/checkGeneralTypeCases";
 import { checkLiteralTypeCases } from "./checks/literal/checkLiteralTypeCases";
 import { checkRecursiveTypeCases } from "./checks/map/checkRecursiveTypeCases";
 import { checkSpecialTypeCases } from "./checks/special/checkSpecialTypeCases";
+import { checkUnionTypeCases } from "./checks/union/checkUnionTypeCases";
 
 /**
  * Verify that the value `value` is of "type" `type`.
@@ -27,6 +28,7 @@ export const typeIt = ((value: any, type: any) => {
     checkGeneralTypeCases,
     checkLiteralTypeCases,
     checkConstructorTypeCases,
+    checkUnionTypeCases,
     checkRecursiveTypeCases,
   ].some((f) => f(value, type));
 }) as TypeIt;

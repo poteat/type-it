@@ -1,6 +1,7 @@
 import { typeIt } from "../src/utility/core/typeIt";
 import { AsyncGeneratorFunction } from "../src/utility/types/generators/AsyncGeneratorFunction";
 import { GeneratorFunction } from "../src/utility/types/generators/GeneratorFunction";
+import { Union } from "../src/utility/union/Union";
 
 describe("Empty tuple type checking", () => {
   it("[] === []", () => {
@@ -301,5 +302,18 @@ describe("Recursive types will throw stack error", () => {
 
     const isValid = () => typeIt([type], [type]);
     expect(isValid).toThrow();
+  });
+});
+
+describe("Union type checking", () => {
+  it("42 === Union(String, Number)", () => {
+    const isValid = typeIt("42", Union(String, Number));
+
+    const value = "42" as any;
+    if (typeIt(value, Union(String, Number))) {
+      value;
+    }
+
+    expect(isValid).toStrictEqual(true);
   });
 });

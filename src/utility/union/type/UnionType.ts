@@ -6,7 +6,7 @@
  * We represent this structure as a class, so we can identify an instance of it
  * at runtime.
  */
-class UnionType<T extends any[]> {
+export class UnionType<T extends any[]> {
   subtypes: T;
 
   constructor(...args: T) {

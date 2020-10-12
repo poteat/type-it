@@ -1,3 +1,4 @@
+import { UnionType } from "../../utility/union/type/UnionType";
 import { Class } from "../class/Class";
 import { NativeInstanceOfClass } from "../native/instances/NativeInstanceOfClass";
 import { ResolveUnionType } from "../union/ResolveUnionType";

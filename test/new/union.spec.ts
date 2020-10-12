@@ -1,16 +1,5 @@
 import { typeIt } from "../../src";
-
-class UnionType<T extends any[]> {
-  subtypes: T;
-
-  constructor(...args: T) {
-    this.subtypes = args;
-  }
-}
-
-function Union<T extends any[]>(...args: T) {
-  return new UnionType(...args);
-}
+import { Union } from "../../src/utility/union/Union";
 
 describe("Union type checking", () => {
   it("42 === Union(String, Number)", () => {

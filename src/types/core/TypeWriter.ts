@@ -1,5 +1,6 @@
 import { Class } from "../class/Class";
 import { NativeInstanceOfClass } from "../native/instances/NativeInstanceOfClass";
+import { ResolveUnionType } from "../union/ResolveUnionType";
 
 /**
  * The core `typeIt` type that converts runtime types into their actual base
@@ -22,6 +23,10 @@ import { NativeInstanceOfClass } from "../native/instances/NativeInstanceOfClass
  */
 export type TypeWriter<T> = T extends Class
   ? NativeInstanceOfClass<T>
+  : T extends (...x: any[]) => any
+  ? T
+  : T extends UnionType<any[]>
+  ? ResolveUnionType<T>
   : T extends object
   ? {
       [key in keyof T]: TypeWriter<T[key]>;
